@@ -1,7 +1,7 @@
 /* usage: gcc -o game main.c `sdl-config --cflags --libs` */
 #include <stdio.h>
 #include <SDL.h>
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 int main(int argc, char *argv[])
 {
@@ -33,6 +33,10 @@ int main(int argc, char *argv[])
     SDL_WM_SetCaption("Hello, Linux Game!", NULL);
 
     SDL_Surface *temp = IMG_Load("card-panel.png");
+    if(temp == NULL){
+        printf("LOAD png PIC FAILED!\n");
+        exit(1);
+    }
     SDL_Surface *panel_surface = SDL_DisplayFormat(temp);
     SDL_FreeSurface(temp);
     SDL_SetColorKey(panel_surface, SDL_SRCCOLORKEY|SDL_RLEACCEL, 0);
@@ -76,6 +80,9 @@ int main(int argc, char *argv[])
     
     SDL_Flip(screen);
     /* To pause the program */
+    while(1){
+        SDL_Delay(1000);
+    }
     getchar();
     return 0;
 }
