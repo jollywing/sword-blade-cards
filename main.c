@@ -17,16 +17,17 @@ int main(int argc, char *argv[])
     SDL_Rect enemy_fig_rect = {330, 5, 107, 139};
     SDL_Rect player_fig_rect = {330, 447, 107, 139};
 
-    SDL_Surface *swordman_surface = SS_load_pic("sword-man.png");
+    SDL_Surface *swordman_surface = SS_load_pic("pic/sword-man.png");
     SS_draw(&ss, swordman_surface, NULL, &enemy_fig_rect);
 
-    SDL_Surface *blademan_surface = SS_load_pic("blade-man.png");
+    SDL_Surface *blademan_surface = SS_load_pic("pic/blade-man.png");
     SS_draw(&ss, blademan_surface, NULL, &player_fig_rect);
 
-    SDL_Surface *panel_surface = SS_load_pic("card-panel.png");
+    SDL_Surface *panel_surface = SS_load_pic("pic/card-panel.png");
+    SS_set_colorkey(panel_surface, 0);
     SS_draw(&ss, panel_surface, NULL, NULL);
 
-    SDL_Surface *action_point_surface = SS_load_pic("action-point.png");
+    SDL_Surface *action_point_surface = SS_load_pic("pic/action-point.png");
     SS_set_colorkey(action_point_surface, 0);
 
     SDL_Rect ball_src_rect = {0, 0, 25, 25};
@@ -46,9 +47,10 @@ int main(int argc, char *argv[])
         ball_dest_rect.x += 25;
     }
     
+
     SS_update_screen(&ss);
 
-    SDL_Surface *card_surface = SS_load_pic("card.png");
+    SDL_Surface *card_surface = SS_load_pic("pic/card.png");
     SS_set_colorkey(card_surface, 0);
 
     bool running;

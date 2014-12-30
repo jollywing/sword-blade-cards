@@ -36,7 +36,7 @@ bool SS_init(SdlSystem *ss, size_t win_width, size_t win_height, const char *win
 
 SDL_Surface * SS_load_pic(const char *path)
 {
-    SDL_Surface *temp = IMG_Load("card-panel.png");
+    SDL_Surface *temp = IMG_Load(path);
     if(temp == NULL){
         return NULL;
     }
